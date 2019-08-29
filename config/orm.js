@@ -68,11 +68,13 @@ var orm = {
     },
     // Set burger devoured status to true.
     updateOne: function(table, objColVals, condition, cb) {
-        var queryString = "UPDATE " + table;
-        queryString += " SET ";
-        queryString += objToSql(objColVals);
-        queryString += " WHERE ";
-        queryString += condition;
+        var queryString =
+         "UPDATE " + 
+         table +
+        " SET " +
+        objToSql(objColVals) +
+        " WHERE " +
+        condition;
 
         console.log(queryString);
 
@@ -85,9 +87,11 @@ var orm = {
     },
     // Delete a burger from the db.
     deleteOne: function(table, condition, cb) {
-        var queryString = "DELETE FROM " + table;
-        queryString += " WHERE ";
-        queryString += condition;
+        var queryString 
+         "DELETE FROM " + 
+         table +
+        " WHERE " +
+         condition;
 
         console.log(queryString);
 
