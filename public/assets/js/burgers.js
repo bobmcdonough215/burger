@@ -20,15 +20,17 @@ $(function () {
     $(".eatburger").on("submit", function(event){
         event.preventDefault();
 
-        var id=$(this).data("id");
+        var id=$(this).children('.change-devour').val();
         var devouredState = {
-            devoured: 1
+            devoured: id
         };
+        console.log("ID: " + id)
+        console.log("Devoured State: " + devouredState);
         $.ajax("/api/burgers/" + id, {
             type: "PUT",
-            data:devouredState
+            data: devouredState
         }).then(function(){
-            console.log("Burger has been" = devouredState);
+            console.log("Burger has been" + devouredState);
             location.reload();
         });
     });
