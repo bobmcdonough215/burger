@@ -1,3 +1,7 @@
+import React from 'react';
+
+
+
 $(function () {
 
     $("#add").on("click", function (event) {
@@ -17,10 +21,10 @@ $(function () {
             location.reload();
         });
     });
-    $(".eatburger").on("click", function(event){
+    $(".eatburger").on("click", function (event) {
         event.preventDefault();
 
-        var id=$(this).data("id");
+        var id = $(this).data("id");
         var devouredState = {
             devoured: id
         };
@@ -29,21 +33,23 @@ $(function () {
         $.ajax("/api/burgers/" + id, {
             type: "PUT",
             data: devouredState
-        }).then(function(){
+        }).then(function () {
             console.log("Burger has been" + devouredState);
             location.reload();
         });
     });
-    $('.deleteBurger').on("click", function(event) {
+    $(".deleteBurger").on("click", function (event) {
         event.preventDefault();
+
         var id = $(this).data("id");
 
+
+
         // Send the DELETE request.
-        $.ajax("/api/burgers/" + id, {
-          type: "DELETE",
-        }).then(function(){
-            console.log("Delete burger" + id);
-            location.reload();
-          })
+        $.ajax({
+            type: "DELETE",
+            url: "/api/burgers/" + id
+          }).then(location.reload(true));
         });
-    });
+      });
+
