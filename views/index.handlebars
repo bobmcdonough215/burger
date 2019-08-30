@@ -1,68 +1,60 @@
-<nav class="navbar navbar-light bg-light justify-content-between">
-  <a class="navbar-brand">Eat-Da-Burger</a>
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" id="burgerName" name="burger_name" placeholder="Add a burger" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="add">Add a burger</button>
-  </form>
-</nav>
-
 <div class="container">
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4">Eat-Da-Burger</h1>
-      <p class="lead">Click on a burger to devour it or add a new burger in the form above!</p>
+      <p class="lead">Click on a burger to devour it or add a new burger!</p>
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" id="burgerName" name="burger_name" placeholder="Add a burger"
+          aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="add">Add a burger</button>
+      </form>
     </div>
   </div>
 
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading" id="leftside"><strong>Burgers ready to be devoured!</strong>
+      </div>
+      <div class="panel-body">
 
-
-  <div class="container">
-    <div class="row" id="top">
-      <div class="col-1"></div>
-      <div class="col-10">
-        <div class="row">
+        <ul>
           {{#each burgers}}
-          {{#unless this.devoured}}
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">{{this.burger_name}}</h5>
-                <form class="eatburger button-size">
-                  <input type="hidden" class="change-devour" type="text" value={{this.id}}><br>
-                  <button type="submit" type="button" class="btn btn-outline-success">Devour</button>
-                </form>
-              </div>
-            </div>
-          </div>
+          {{#unless devoured}}
+
+          <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
+          <button type="button" class="eatburger btn btn-warning" type="submit" id="eatburger" data-id="{{this.id}}"
+            data-newDevoured="{{devour}}"><span class="fa fa-usd"></span></button>
+          <hr>
           {{/unless}}
           {{/each}}
-        </div>
-      </div>
+        </ul>
 
-
-      <div class="col-1"></div>
-    </div>
-    <div class="col-1"></div>
-    <div class="col-10">
-      <div class="row">
-        {{#each burgers}}
-        {{#if devoured}}
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">{{this.burger_name}}</h5>
-              <form class="eatburger button-size">
-                <input type="hidden" class="change-devour" type="text" value={{this.id}}><br>
-                <button type="submit" type="button" class="btn btn-outline-success">Devour</button>
-              </form>
-            </div>
-          </div>
-        </div>
-        {{/if}}
-        {{/each}}
       </div>
     </div>
-
-
-    <div class="col-1"></div>
   </div>
+
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading" id="rightside"><strong>Devoured burgers</strong>
+      </div>
+      <div class="panel-body">
+        <ul>
+          {{#each burgers}}
+          {{#if devoured}}
+          <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
+          <button type="button" class="deleteBurger btn btn-danger" type="submit" id="deleteBurger" data-id="{{this.id}}"
+            data-newDevoured="{{devour}}"><span class="fa fa-trash"></span></button>
+          <hr>
+          {{/if}}
+          {{/each}}
+        </ul>
+
+
+
+      </div>
+    </div>
+  </div>
+
+</div>

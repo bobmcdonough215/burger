@@ -17,10 +17,10 @@ $(function () {
             location.reload();
         });
     });
-    $(".eatburger").on("submit", function(event){
+    $(".eatburger").on("click", function(event){
         event.preventDefault();
 
-        var id=$(this).children('.change-devour').val();
+        var id=$(this).data("id");
         var devouredState = {
             devoured: id
         };
@@ -34,16 +34,16 @@ $(function () {
             location.reload();
         });
     });
-    $('.deleteBurger').on('submit', function(event) {
+    $('.deleteBurger').on("click", function(event) {
         event.preventDefault();
-        var id = $(this).children('.delete').val();
-    
-        $.ajax('/api/burgers/' + id, {
-          type: "DELETE"
+        var id = $(this).data("id");
+
+        // Send the DELETE request.
+        $.ajax("/api/burgers/" + id, {
+          type: "DELETE",
         }).then(function(){
-          console.log("Deleting burger with id of: " + id);
-          location.reload();
-        })
-    
-      })
-});
+            console.log("Delete burger" + id);
+            location.reload();
+          })
+        });
+    });
