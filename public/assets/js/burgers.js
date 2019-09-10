@@ -1,7 +1,3 @@
-import React from 'react';
-
-
-
 $(function () {
 
     $("#add").on("click", function (event) {
@@ -17,8 +13,9 @@ $(function () {
             type: "POST",
             data: newBurger
         }).then(function () {
-            console.log("Added new burger" + newBurger);
             location.reload();
+            console.log("Added new burger" + newBurger);
+
         });
     });
     $(".eatburger").on("click", function (event) {
@@ -34,22 +31,19 @@ $(function () {
             type: "PUT",
             data: devouredState
         }).then(function () {
-            console.log("Burger has been" + devouredState);
             location.reload();
+            console.log("Burger has been" + devouredState);
+
         });
     });
     $(".deleteBurger").on("click", function (event) {
         event.preventDefault();
-
-        var id = $(this).data("id");
-
-
+        var id = $(this).data("id")
 
         // Send the DELETE request.
         $.ajax({
             type: "DELETE",
             url: "/api/burgers/" + id
-          }).then(location.reload(true));
+          }).then(location.reload());
         });
       });
-

@@ -1,3 +1,5 @@
+
+
 <div class="container">
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
@@ -24,8 +26,8 @@
           {{#unless devoured}}
 
           <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
-          <button type="button" class="eatburger btn btn-warning" type="submit" id="eatburger" data-id="{{this.id}}"
-            data-newDevoured="{{devour}}"><span class="fa fa-usd"></span></button>
+          <button type="button" class="eatburger btn btn-warning btn-lrg" type="submit" id="eatburger" data-id="{{this.id}}"
+            data-newDevoured="{{devour}}"><span class="fas fa-hamburger"></span></button>
           <hr>
           {{/unless}}
           {{/each}}

@@ -86,7 +86,7 @@ var orm = {
         });
     },
     // Delete a burger from the db.
-    deleteOne: function(table, condition, cb) {
+    delete: function(table, condition, cb) {
         var queryString 
          "DELETE FROM " + 
          table +
@@ -96,9 +96,10 @@ var orm = {
         console.log(queryString);
 
         connection.query(queryString, function(err, result) {
-            if (err) {
-                throw err
-            }
+          if(err.message == 'Query was empty'){
+            console.log('There is no changes in the update, lets continue the progress...');
+            next();
+        }
             cb(result);
         });
     }
